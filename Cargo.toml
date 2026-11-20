@@ -2,9 +2,11 @@
 name = "handl-lib-error"
 version = "0.1.0"
 edition = "2024"
-description = "error: Handl stdlib port (ADR-0128 split)."
+description = "error — error-raising primitive (`error.raise`)."
 license = "MIT"
 repository = "https://github.com/handl-lang/lib-error"
+readme = "README.md"
+homepage = "https://github.com/handl-lang/lib-error"
 
 [dependencies]
 handl-lib-ops = { git = "https://github.com/handl-lang/kernel", branch = "main" }
