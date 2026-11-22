@@ -20,8 +20,12 @@
 --- `"error"` module path, exactly like `type.of`/`tag.tag`.
 ---
 --- `error.try(f)` calls a thunk and captures raised errors as a `result`
---- value: `{"__tag__":"ok","value":v}` on success or
---- `{"__tag__":"err","value":msg}` on failure. This closes ADR-0092
+--- value in the canonical ADR-0152 `__ctor__` encoding — the same record
+--- `result.ok(v)`/`result.err(e)` mint: `{"__ctor__": ok-sym, "value": v,
+--- "type": {"__former__": Result-sym, "indices": [null, null]}}` on success
+--- or the `err` ctor with the message string on failure. `match` dispatches
+--- on the ctor sym's display name (`ok`/`err`), so `match r { ok(v): …,
+--- err(e): … }` works without importing `result`. This closes ADR-0092
 --- gap (b) and makes `assert.throws`/`test.run` expressible in handl.
 
 cap "error.raise"
@@ -30,7 +34,8 @@ cap "error.try"
 --- error.raise -- fail the current evaluation with the given payload.
 op "error.raise" : Value -> a
 
---- error.try -- call a thunk and return a `result` tag.
+--- error.try -- call a thunk and return a `result` ctor value
+--- (`{"__ctor__": ok|err, "value": _, "type": Result[…]}`).
 op "error.try" : Fn -> Value
 
 handle "error.raise" with rust_error_raise
