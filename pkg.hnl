@@ -1,0 +1,12 @@
+-- lib-error: the `error` module — the error-raising primitive
+-- contract (ADR-0092). Transitional layout: the interface is
+-- `src/index.hnl` (cap/op declarations); `raise`/`try` are native
+-- `op` atoms.
+{
+  modules: ["error"],
+  name: "error",
+  description: "Error primitives — error.raise fails evaluation loudly; error.try captures it as a result ctor value.",
+  license: "MIT",
+  keywords: ["error", "raise", "try", "result", "stdlib", "handl"],
+  homepage: "https://github.com/handl-lang/lib-error",
+}
