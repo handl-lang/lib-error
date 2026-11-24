@@ -1,0 +1,13 @@
+# lib-error atom spec (P-013/T-151) — Error-raising primitive — native impls in the lib-error crate (`error_op_registry`); impl keys are the `handle ... with` hints (rust_ prefix dropped).
+# `sig` = handl signature (~> canonical), `impl` = key for the
+# module's impl table, `total` replaces `guarantee: True` decl
+# clauses. Generated from the cap/op/handle triples in
+# src/index.hnl.
+module: error
+atoms:
+  - name: error.raise
+    sig: "Value ~> a"
+    impl: error_raise
+  - name: error.try
+    sig: "Fn ~> Value"
+    impl: error_try
