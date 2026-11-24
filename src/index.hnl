@@ -32,11 +32,11 @@ cap "error.raise"
 cap "error.try"
 
 --- error.raise -- fail the current evaluation with the given payload.
-op "error.raise" : Value -> a
+op "error.raise" : Value ~> a
 
 --- error.try -- call a thunk and return a `result` ctor value
 --- (`{"__ctor__": ok|err, "value": _, "type": Result[…]}`).
-op "error.try" : Fn -> Value
+op "error.try" : Fn ~> Value
 
 handle "error.raise" with rust_error_raise
 handle "error.try" with rust_error_try
