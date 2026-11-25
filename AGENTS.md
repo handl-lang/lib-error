@@ -8,16 +8,17 @@ result-ctor value. Hybrid package: `.hnl` interface plus Rust atoms.
 
 | path | role |
 | --- | --- |
-| `src/index.hnl` | the interface — `cap`/`op` declarations |
-| `src/lib.rs`, `src/ops.rs` | Rust atoms (`raise`/`try` are native `op` atoms) |
+| `src/index.hnl` | the interface — documentation surface; atom spec in `atoms.yaml` (P-013/T-151) |
+| `src/lib.rs`, `src/ops.rs` | Rust `Op` impls (`raise`/`try` are native atoms) + `error_op_registry()` |
 | `atoms.yaml`, `Cargo.toml`, `xtask/` | atom registry + Rust gate |
 | `pkg.hnl`, `scripts/hnl-gate.sh` | manifest + `.hnl` gate |
 | `workflows/gate.yaml` | CI — shared `handl-gates` campaign |
 
 ## Contract
 
-- Transitional layout: cap/op declarations in `.hnl`, implementations
-  are native atoms.
+- Spec-driven layout: `atoms.yaml` is the spec; the Rust `Op` impls
+  live in this crate (`src/ops.rs`) and resolve via the host's
+  `error_impls()` table (`plugin-lib-stdlib` `ops/kernel_impls.rs`).
 - `raise` produces eval errors; `try` wraps them as `Result` values —
   keep that distinction in any new primitive.
 
