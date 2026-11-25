@@ -2,6 +2,7 @@
 name = "handl-lib-error"
 version = "0.1.0"
 edition = "2024"
+rust-version = "1.85"
 description = "error — error-raising primitive (`error.raise`)."
 license = "MIT"
 repository = "https://github.com/handl-lang/lib-error"
