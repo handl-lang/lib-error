@@ -2,6 +2,7 @@
 -- contract (ADR-0092). Transitional layout: the interface is
 -- `src/index.hnl` (cap/op declarations); `raise`/`try` are native
 -- `op` atoms.
+-- test_coverage "none": doc-only surface — error.raise/try are native atoms; src/index.hnl is comments only.
 {
   modules: ["error"],
   name: "error",
@@ -9,4 +10,5 @@
   license: "MIT",
   keywords: ["error", "raise", "try", "result", "stdlib", "handl"],
   homepage: "https://github.com/handl-lang/lib-error",
+  test_coverage: "none",
 }
